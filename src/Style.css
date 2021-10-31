@@ -1,0 +1,87 @@
+body{
+    background-image: linear-gradient( rgb(156, 200, 200) 1rem, rgb(246, 212, 251) 10rem, pink, white 55rem);
+    height: 100vh;
+    
+}
+
+
+#head1{
+    text-align: center;
+    text-shadow: 3px 3px aqua;
+}
+
+.Buttons-div{
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 4%;
+}
+
+
+button{
+    height: 60px;
+    padding:10px;
+    border-radius: 25px;
+    border: 2px solid black;
+    background-color: rgb(170 225 225);
+    
+}
+
+button:hover{
+    background-color: aqua;
+}
+
+
+
+.Functional-div{
+    width: 400px;
+    background: aqua;
+    border: 3px solid black;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 10px;
+    height: fit-content;
+}
+
+.Class-div{
+    width: 400px;
+    background: rgb(170, 5, 170);
+    border: 3px solid black;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 10px;
+    height: fit-content;
+
+}
+
+.data-container{
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+}
+
+@media screen and (min-width:320px) and (max-width:850px) {
+    body{
+        height: 150vh;
+    }
+    .data-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .Buttons-div{
+        margin-left: 10%;
+        width: 312px;
+    }
+
+    .Class-div{
+        width: 330px !important;
+
+    }
+
+    .Functional-div{
+        width: 330px;
+    }
+
+}
