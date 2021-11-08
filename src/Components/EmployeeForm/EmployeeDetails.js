@@ -57,7 +57,7 @@ showButton=()=>{
     this.setState({isBackButtonVisible:!this.state.isBackButtonVisible})
 }
 addDetails(){
-    e.preventDefault();
+    
     this.addData();
 }
 
