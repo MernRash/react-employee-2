@@ -1,5 +1,7 @@
 import './Form.css';
 import React,{Component} from 'react';
+import EmployeeData from '../EmployeeData/EmployeeData';
+
 
 class EmployeeForm extends Component{
     constructor(props){
@@ -10,7 +12,6 @@ class EmployeeForm extends Component{
             department : "",
             ratings : "",
             list : [],
-            isFormVisible: true,
             isBackButtonVisible: false
             
 
@@ -41,7 +42,6 @@ addData(e){
             department : "",
             ratings : "",
             list,
-            isFormVisible: false,
             isBackButtonVisible: true
             
            
@@ -51,28 +51,29 @@ addData(e){
 
 }
 
-backButton() {
-    const changeHead = document.querySelector("#head1");
-    changeHead.innerHTML = "EMPLOYEE FEEDBACK FORM";
-    this.setState({
-      isFormVisible: true,
-      isBackButtonVisible: false
-    
-    });
-  }
 
+
+showButton=()=>{
+    this.setState({isBackButtonVisible:!this.state.isBackButtonVisible})
+}
 addDetails(){
-    // e.preventDefault();
+    e.preventDefault();
     this.addData();
 }
 
 
     render(){
+        const btn = this.state.newListItem === "" || this.state.department === "" || this.state.ratings === 0;
         return(
+           <>
+           {
+               this.state.isBackButtonVisible ?
+               <EmployeeData list={this.state.list} isBackButtonVisible={this.showButton} /> :
+
            <div className="App">
                <h1 id="head1">EMPLOYEE FEEDBACK FORM</h1>
 
-            <div className="form-container" style={{ display: this.state.isFormVisible ? "flex" : "none" }}>
+            <div className="form-container">
                 <label>
                     Name:
                     <input value={this.state.newListItem} placeholder="Enter Your Name" onChange={(e)=>this.addUserInput("newListItem",e.target.value)} />{" "}
@@ -88,11 +89,11 @@ addDetails(){
                     <input type="number" value={this.state.ratings} placeholder="Enter Your Ratings" onChange={(e)=>this.addUserInput("ratings",e.target.value)} />{" "}
                 </label>
                 <br />
-                <button disabled={this.state.newListItem === "" || this.state.department === "" || this.state.ratings === 0} onClick={()=>this.addDetails()}>Submit</button>
+                <button disabled={btn} onClick={()=>this.addDetails()}>Submit</button>
 
             </div>
 
-            <ul  style={{visibility: this.state.isFormVisible ? "hidden" : "visible"}}>
+            <ul>
               
             {
                 this.state.list.map((item)=>{
@@ -106,10 +107,10 @@ addDetails(){
                 })
             }
             </ul>
-            <button style={{ display: this.state.isBackButtonVisible ? "block" : "none"}} onClick={() => this.backButton()} >
-          Go Back {" "}
-        </button>
+           
            </div>
+    }
+           </>
         );
     }
 }
